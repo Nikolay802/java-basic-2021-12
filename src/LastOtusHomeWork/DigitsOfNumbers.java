@@ -16,4 +16,4 @@ public class DigitsOfNumbers {
         tensThousands = number / 10000 % 10;
         hundredsThousands = number / 100000 % 10;
     }
-}//
+}////
