@@ -1,0 +1,37 @@
+CREATE TABLE testsystemQuestions(
+	testsystemQuestions_id       SERIAL       PRIMARY KEY,
+	question                     VARCHAR(200) NOT NULL
+);
+
+SELECT testsystemQuestions_id, question FROM testsystemQuestions;
+
+INSERT INTO testsystemQuestions (question)
+VALUES ('Сколько грамм содержится в килограмме?'),
+       ('Сколько пальцев на руках у человека?'),
+       ('Какова частота ноты Ля второй октавы?');
+	   
+CREATE TABLE testsystenAnswers(
+	testsystenAnswers_id      SERIAL       PRIMARY KEY,
+	answers                   VARCHAR(200) NOT NULL,
+	testsystemQuestions_id    INTEGER      REFERENCES testsystemQuestions(testsystemQuestions_id)
+);
+
+SELECT testsystenAnswers_id, answers, testsystemQuestions_id FROM testsystenAnswers;
+
+INSERT INTO testsystenAnswers (answers,testsystemQuestions_id)
+VALUES ('900','1'),
+       ('1000','1'),
+       ('500','1'),
+       ('3','2'),
+       ('5','2'),
+       ('10','2'),
+       ('23','2'),
+       ('440','3'),
+       ('34','3'),
+       ('670','3'),
+       ('450','3'),
+       ('67','3');
+
+SELECT testsystemQuestions.*, testsystenAnswers.*
+FROM testsystemQuestions
+JOIN testsystenAnswers ON testsystenAnswers.testsystemQuestions_id = testsystemQuestions.testsystemQuestions_id;
